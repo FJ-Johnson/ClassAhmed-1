@@ -1,3 +1,4 @@
+packer {
 required_plugins {
     amazon = {
         source = "github.com/hashicorp/amazon"
@@ -14,7 +15,7 @@ required_plugins {
 source "amazon-ebs" "nginx-git" {
     region = "eu-west-1"
     instance_type = "t3.micro"
-    ssh_username = "ec2-user
+    ssh_username = "ec2-user"
     source_ami = "ami-09c54d172e7aa3d9a"
     ami_name = "nginx-git-by-packer"
     ami_virtualization_type ="hvm"
@@ -36,7 +37,7 @@ build {
             "sudo yum install nginx -y",
             "sudo systemctl enable nginx",
             "sudo systemctl start nginx",
-            "echo <h1> Hello from FJohnson - Built by Packer </h1> | sudo tee /usr/share/nginx/html/index.html",
+            "echo '<h1> Hello from FJohnson - Built by Packer </h1>' | sudo tee /usr/share/nginx/html/index.html",
             "sudo yum install git -y"
 
         ]
@@ -46,4 +47,19 @@ build {
         inline = ["echo 'AMI BUILT' "]
     }
 }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
