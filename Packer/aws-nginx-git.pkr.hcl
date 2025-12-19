@@ -1,15 +1,16 @@
 packer {
+    
 required_plugins {
     amazon = {
         source = "github.com/hashicorp/amazon"
         version = ">= 1.2.0"
         
-        
+      }
      }
-}
+} 
 
 #---------------------------------
-#source "PROCEESS OF BUILDING AMI
+#source PROCEESS OF BUILDING AMI
 #---------------------------------
 
 source "amazon-ebs" "nginx-git" {
@@ -22,7 +23,7 @@ source "amazon-ebs" "nginx-git" {
 }
 
 #----------------------------------
-#build: source + provisioning to do
+#build  source + provisioning to do
 #-----------------------------------
 
 build {
@@ -47,7 +48,7 @@ build {
         inline = ["echo 'AMI BUILT' "]
     }
 }
-}
+
 
 
 
