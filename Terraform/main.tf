@@ -160,7 +160,7 @@ resource "aws_instance" "python_node" {
 resource "aws_instance" "java_node" {
   ami                    = "ami-098fc3f1217942a8e"
   instance_type          = "t3.micro"
-  subnet_id              = "subnet-0579e08acc73f5ab"
+  subnet_id              = "subnet-0579e08acc73f5ab6"
   vpc_security_group_ids = ["sg-07b36c225318b0dda"]
   key_name               = "BlackDot"
 
