@@ -139,7 +139,9 @@ resource "aws_instance" "web_node" {
   }
 }
 
+-------------------------
 # Node 2: Python Backend
+-------------------------
 resource "aws_instance" "python_node" {
   ami                    = "ami-0330f47320d53fd91"
   instance_type          = "t3.micro"
@@ -152,7 +154,9 @@ resource "aws_instance" "python_node" {
       }
 }
 
+-----------------------
 # Node 3: Java Backend
+-----------------------
 resource "aws_instance" "java_node" {
   ami                    = "ami-098fc3f1217942a8e"
   instance_type          = "t3.micro"
