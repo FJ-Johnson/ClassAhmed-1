@@ -124,7 +124,9 @@ resource "aws_security_group" "java_sg" {
   }
 }
 
-
+--------------------------
+# Node 1: Nginx Frointend
+--------------------------
 resource "aws_instance" "web_node" {
   ami           = "ami-097409ef90cde4a3f"
   instance_type = "t3.micro"
