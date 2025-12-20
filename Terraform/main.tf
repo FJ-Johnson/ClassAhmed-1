@@ -20,19 +20,16 @@ provider "aws" {
 # -------------------------
 
 resource "aws_security_group" "web_sg" {
-
   name        = "web-sg"
-  description = "Allow SSH and Port 80  inbound, all outbound"
+  description = "Allow SSH and HTTP (Port 80)  inbound, all outbound"
 
 }
 
 
-
-
 resource "aws_instance" "web_node" {
-  ami           = "ami-002075433fbd7ba04"
+  ami           = "ami-097409ef90cde4a3f"
   instance_type = "t3.micro"
-  subnet_id     = "subnet-0828482fafcb40dc8"
+  subnet_id     = "subnet-0579e08acc73f5ab6"
   key_name = "BlackDot"
 
   tags = {
