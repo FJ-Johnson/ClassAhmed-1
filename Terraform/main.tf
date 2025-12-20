@@ -33,7 +33,7 @@ resource "aws_instance" "web_node" {
   ami           = "ami-002075433fbd7ba04"
   instance_type = "t3.micro"
   subnet_id     = "subnet-0828482fafcb40dc8"
-    key_name = "BlackDot"
+  key_name = "BlackDot"
 
   tags = {
     Name = "web_node"
