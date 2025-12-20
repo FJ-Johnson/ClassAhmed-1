@@ -18,9 +18,36 @@ source "amazon-ebs" "nginx-git" {
     instance_type = "t3.micro"
     ssh_username = "ec2-user"
     source_ami = "ami-09c54d172e7aa3d9a"
-    ami_name = "nginx-git-by-packer"
+    ami_name = "nginx-git-by-packer V3"
     ami_virtualization_type ="hvm"
 }
+
+
+#-----------------------------------------------
+#source PROCEESS OF BUILDING JAVA + PYTHON AMIs
+#-----------------------------------------------
+
+source "amazon-ebs" "java-git" {
+    region = "eu-west-1"
+    instance_type = "t3.micro"
+    ssh_username = "ec2-user"
+    source_ami = "ami-09c54d172e7aa3d9a"
+    ami_name = "java-git-by-packer V3"
+    ami_virtualization_type ="hvm"
+}
+
+
+
+source "amazon-ebs" "python-git" {
+    region = "eu-west-1"
+    instance_type = "t3.micro"
+    ssh_username = "ec2-user"
+    source_ami = "ami-09c54d172e7aa3d9a"
+    ami_name = "python-git-by-packer V3"
+    ami_virtualization_type ="hvm"
+}
+
+
 
 #----------------------------------
 #build  source + provisioning to do
@@ -44,6 +71,44 @@ build {
         ]
     }
 
+post-processor "shell-local" {
+        inline = ["echo 'AMI BUILT' "]
+    }
+}
+
+
+build { 
+     name = "java-git-ami-build"
+     sources = [
+        "source.amazon-ebs.java-git"
+]
+
+provisioner "shell" {
+    inline = [
+        "sudo yum update -y",
+        "sudo yum install java-17-amazon-corretto -y"
+     ]
+   }
+
+
+post-processor "shell-local" {
+        inline = ["echo 'AMI BUILT' "]
+    }
+}
+
+build { 
+     name = "python-git-ami-build"
+     sources = [
+        "source.amazon-ebs.python-git"
+     ]
+
+provisioner "shell" {
+    inline = [
+        "sudo yum update -y",
+        "sudo yum install python3 -y"
+     ]
+    }
+   
     post-processor "shell-local" {
         inline = ["echo 'AMI BUILT' "]
     }
